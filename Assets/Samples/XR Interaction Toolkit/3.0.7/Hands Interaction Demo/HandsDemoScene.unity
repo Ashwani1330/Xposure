@@ -7237,6 +7237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableHandle
       objectReference: {fileID: 0}
+    - target: {fileID: 7403072356416083929, guid: ed5fdb8d3e523e94ca6d8a239d40615a, type: 3}
+      propertyPath: m_PermittedDisplacementAxes
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7403072356416083930, guid: ed5fdb8d3e523e94ca6d8a239d40615a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -7458,6 +7462,10 @@ PrefabInstance:
     - target: {fileID: 5351699892982346052, guid: 9f3131970d20c3442ae6ffeab12aef04, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693593141356526706, guid: 9f3131970d20c3442ae6ffeab12aef04, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7668543234309889069, guid: 9f3131970d20c3442ae6ffeab12aef04, type: 3}
       propertyPath: m_Pivot.x
