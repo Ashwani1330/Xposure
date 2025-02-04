@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
 using System.Collections;
 
 public class SpeechManager : MonoBehaviour
 {
-    public TextMeshProUGUI speechText; // Assign in Inspector
+    public Text speechText; // Assign in Inspector
     public string apiURL = "https://randomuser.me/api/"; // Replace with actual API URL
 
     void Start()

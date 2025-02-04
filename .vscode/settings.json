@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Xposure - Copy.sln"
+    "dotnet.defaultSolution": "Xposure.sln"
 }
