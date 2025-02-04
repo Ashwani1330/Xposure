@@ -9,7 +9,7 @@ public class VolumeTrigger : MonoBehaviour
     public Sprite muteSprite;
     public Sprite unmuteSprite;
     public Slider volumeSlider;
-    public TextMeshProUGUI volumeText;
+
     public AudioSource source;
     private bool isMuted = false;
 
@@ -19,7 +19,7 @@ public class VolumeTrigger : MonoBehaviour
         source.Play();
         volumeSlider.value = source.volume;
         volumeSlider.maxValue = 1.0f; // Ensure max volume is 1
-        UpdateVolumeText();
+ 
         UpdateMuteButtonSprite();
     }
 
@@ -28,7 +28,6 @@ public class VolumeTrigger : MonoBehaviour
         source.volume = volumeSlider.value;
         isMuted = source.volume == 0;
         source.mute = isMuted;
-        UpdateVolumeText();
         UpdateMuteButtonSprite();
     }
 
@@ -40,10 +39,6 @@ public class VolumeTrigger : MonoBehaviour
         UpdateMuteButtonSprite();
     }
 
-    private void UpdateVolumeText()
-    {
-        volumeText.text = Mathf.RoundToInt(source.volume * 100).ToString();
-    }
 
     private void UpdateMuteButtonSprite()
     {
