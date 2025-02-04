@@ -4,71 +4,52 @@ using TMPro;
 
 public class VolumeTrigger : MonoBehaviour
 {
-    public Button VolumeTriggerButton;
-
-    public Text volumeText;
-    public bool On;
-   // public Sprite OnSprite;
-   // public Sprite OffSprite;
-    public int currentVolume;
-
+    public Button muteButton;
+    public Image muteButtonImage; // Assign this manually in the Inspector
+    public Sprite muteSprite;
+    public Sprite unmuteSprite;
+    public Slider volumeSlider;
+    public TextMeshProUGUI volumeText;
     public AudioSource source;
+    private bool isMuted = false;
 
     void Start()
     {
-        source.volume = 0.25f;
-        currentVolume = 1;
-        volumeText.text = currentVolume.ToString();
+        source.volume = 0.25f; // Set initial volume to max
+        source.Play();
+        volumeSlider.value = source.volume;
+        volumeSlider.maxValue = 1.0f; // Ensure max volume is 1
+        UpdateVolumeText();
+        UpdateMuteButtonSprite();
     }
 
-    void Update()
+    public void SetVolume()
     {
-        if (On)
-        { 
-            if (!source.isPlaying)
-            {
-                source.Play();
-            }
-        }
-        else
-        {
-            source.Stop();
-        }
+        source.volume = volumeSlider.value;
+        isMuted = source.volume == 0;
+        source.mute = isMuted;
+        UpdateVolumeText();
+        UpdateMuteButtonSprite();
     }
 
-    public void IncreaseVolume()
+    public void ToggleMute()
     {
-        if (source.volume < 1)
-        {
-            source.volume += 0.25f;
-            currentVolume += 1;
-            volumeText.text = currentVolume.ToString();
-        }
+        isMuted = !isMuted;
+        source.mute = isMuted;
+        volumeSlider.value = isMuted ? 0 : source.volume;
+        UpdateMuteButtonSprite();
     }
 
-    public void DecreaseVolume()
+    private void UpdateVolumeText()
     {
-        if (source.volume > 0.25)
-        {
-            source.volume -= 0.25f;
-            currentVolume -= 1;
-            volumeText.text = currentVolume.ToString();
-        }
+        volumeText.text = Mathf.RoundToInt(source.volume * 100).ToString();
     }
 
-
-    public void ToggleTick()
+    private void UpdateMuteButtonSprite()
     {
-        /*
-        if (!On)
+        if (muteButtonImage != null)
         {
-            VolumeTriggerButton.GetComponent<Image>().sprite = OnSprite;
+            muteButtonImage.sprite = isMuted ? muteSprite : unmuteSprite;
         }
-        else
-        {
-            VolumeTriggerButton.GetComponent<Image>().sprite = OffSprite;
-        }
-        */
-        On=!On;
     }
 }
