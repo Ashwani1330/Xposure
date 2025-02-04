@@ -9,7 +9,7 @@ public class LoadScenes : MonoBehaviour
     }
     public void LoadStadium()
     {
-        SceneManager.LoadScene("Stadium");
+        SceneManager.LoadScene("Stadium_Scene");
     }
     public void LoadConference()
     {
