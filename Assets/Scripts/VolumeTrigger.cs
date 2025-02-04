@@ -35,9 +35,20 @@ public class VolumeTrigger : MonoBehaviour
     {
         isMuted = !isMuted;
         source.mute = isMuted;
-        volumeSlider.value = isMuted ? 0 : source.volume;
+
+        if (isMuted)
+        {
+            volumeSlider.value = 0;
+        }
+        else
+        {
+            source.volume = 0.25f; // Restore volume when unmuted
+            volumeSlider.value = source.volume;
+        }
+
         UpdateMuteButtonSprite();
     }
+
 
 
     private void UpdateMuteButtonSprite()
